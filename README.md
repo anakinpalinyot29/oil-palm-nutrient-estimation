@@ -114,14 +114,3 @@ This system follows a structured ML pipeline from raw data preprocessing to mode
 Special thanks to **Dr. Apichon Witayangkurn** for guidance and supervision throughout this project.
 
 ---
-
-## 📎 Repository Structure (optional)
-
-```bash
-.
-├── data/                   # Raw and processed spectral data
-├── images/                 # Diagrams, charts, and GIFs
-├── notebooks/              # Jupyter Notebooks for experimentation
-├── models/                 # Saved ML models
-├── src/                    # Preprocessing and training scripts
-├── README.md               # Project documentation
