@@ -44,7 +44,7 @@ This system follows a structured ML pipeline from raw data preprocessing to mode
 ---
 ## 🧪 Preprocessing Pipeline
 
-![preprocess](images/preprocessing_pipeline.png)
+![preprocess](images/preprocessing_pipelinepng.png)
 
 ### 1. Noise Reduction
 - **Savitzky-Golay filter** applied to smooth spectral signals.
