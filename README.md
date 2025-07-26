@@ -1,120 +1,142 @@
-# 🌿 Oil Palm Leaf Nutrient Estimation from Spectroradiometer Data 🔬
+# 🌿 Oil Palm Leaf Nutrient Estimation from Spectroradiometer Data
 
-[![GitHub license](https://img.shields.io/github/license/YOUR_USERNAME/YOUR_REPO_NAME.svg)](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME/blob/main/LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/YOUR_USERNAME/YOUR_REPO_NAME.svg?style=social)](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/YOUR_USERNAME/YOUR_REPO_NAME.svg?style=social)](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME/network/members)
----
+> 📌 *Advised by Dr. Apichon Witayangkurn*
 
-## 🌟 Introduction
-
-Oil palm trees are vital for global palm oil production, a commodity widely used in food, cosmetics, and biofuels. Ensuring their optimal growth and yield requires precise management of essential nutrients: **Nitrogen (N), Phosphorus (P), Potassium (K), and Magnesium (Mg)**.
-
-This project introduces a robust machine learning system designed to estimate nutrient levels in oil palm leaves directly from spectroradiometer data. By accurately assessing nutrient status, we can prevent over-fertilization, promote sustainable agricultural practices, and enhance tree health and productivity.
+This project uses spectral data from oil palm leaves to estimate nutrient levels (N, P, K, Mg) using machine learning models. It aims to enhance nutrient monitoring while minimizing fertilizer overuse for sustainable agriculture.
 
 ---
 
-## 🔬 Dataset
+## 📚 Table of Contents
 
-The project utilizes spectroradiometer data from oil palm leaves. This dataset is the foundation for training models to correlate spectral signatures with specific nutrient levels.
-
----
-
-## 📐 System Architecture
-
-Our system is engineered to analyze and predict nutrient levels using a comprehensive machine learning pipeline. It encompasses data preprocessing, model training, and prediction for nutrient deficiency levels, leveraging both classification and regression approaches.
-
-### ⚙️ Preprocessing Pipeline
-
-A critical component of our system is the sophisticated preprocessing pipeline, designed to transform raw spectroradiometer data into a clean, normalized, and optimized format for machine learning.
-
-#### 🌊 Noise Reduction
-Applies the **Savitzky-Golay filter** to smooth spectral data, effectively reducing noise while preserving important signal characteristics.
-
-#### 📊 Baseline Correction
-Implements a **polynomial detrending method** to remove baseline effects from the spectral data, significantly improving its quality for analysis.
-
-#### ⚖️ Normalization
-Scales the spectral data to a range of $[0, 1]$ using **Min-Max scaling**, ensuring consistency and comparability between features for robust model training.
-
-#### 🎯 Feature Selection with PCA
-Utilizes **Principal Component Analysis (PCA)** to reduce the dimensionality of the spectral data. Components that collectively explain **95% of the variance** are retained, yielding a smaller, more meaningful feature set.
-
-#### 📈 Data Augmentation
-Generates synthetic data by adding small random noise to the first four principal components (PCs). This process combines synthetic data with the original dataset to increase the size and diversity of the training data, enhancing model generalization.
-
-#### 🏷️ Target Label Encoding
-Encodes the categorical target variable (Rule) into numeric values for machine learning compatibility, ensuring the presence of the target column before processing.
+- [🌱 Introduction](#-introduction)
+- [📁 Dataset](#-dataset)
+- [⚙️ System Architecture](#️-system-architecture)
+- [🧪 Preprocessing Pipeline](#-preprocessing-pipeline)
+- [🤖 Model Training](#-model-training)
+- [📐 Design Specification](#-design-specification)
+- [📊 Evaluation](#-evaluation)
+- [🙏 Acknowledgments](#-acknowledgments)
 
 ---
 
-## 🧠 Model Training
+## 🌱 Introduction
 
-### Data Splitting
+Oil palm trees are key sources of palm oil used in food, cosmetics, and biofuels. Nutrients like Nitrogen (N), Phosphorus (P), Potassium (K), and Magnesium (Mg) are essential for healthy growth.
 
-The dataset is rigorously split into **80% training data** and **20% testing data** using **Stratified Sampling** via the `train_test_split()` method. This stratification ensures that the class distribution in both the training and testing sets closely mirrors that of the original dataset, leading to more reliable model evaluation.
-
-### Classification Models
-
-An **ensemble learning approach** combines multiple powerful models using a **Voting Classifier** to leverage their diverse strengths for robust classification.
-
-* **XGBoost (XGBClassifier)**
-* **LightGBM (LGBMClassifier)**
-* **CatBoost (CatBoostClassifier)**
-* **MLPClassifier**
-
-### Regression Model
-
-The **Gradient Boosting Regressor** was specifically selected for its exceptional ability to handle complex, non-linear relationships within the data, providing robust and accurate predictions for continuous nutrient levels.
-
-### Hyperparameter Tuning
-
-(You mentioned this but didn't detail the method. If you used a specific technique like GridSearchCV or Optuna, briefly mention it here.)
+Monitoring these nutrients helps avoid fertilizer overuse and promotes better crop management.
 
 ---
 
-## 📈 Evaluation
+## 📁 Dataset
 
-Our models were rigorously evaluated using a suite of metrics tailored for both classification and regression tasks.
+The dataset consists of spectral readings from a **spectroradiometer**, processed and labeled for nutrient estimation tasks.
 
-### Evaluation Metrics
-
-#### For Classification Models
-* **Accuracy:** The proportion of correctly predicted instances.
-* **F1-Score:** The harmonic mean of precision and recall, providing a balanced measure of a model's performance on imbalanced datasets.
-
-#### For Regression Models
-* **Mean Squared Error (MSE):** The average of the squared differences between predicted and actual values.
-* **Root Mean Squared Error (RMSE):** The square root of MSE, providing error in the same units as the target variable.
-* **Mean Absolute Error (MAE):** The average of the absolute differences between predicted and actual values.
-* **R-squared ($R^2$):** The proportion of variance in the dependent variable that can be predicted from the independent variable(s).
-
-### Nutrient Prediction Performance
-
-Here's a summary of the performance for each nutrient:
-
-| Nutrient    | Classification Accuracy | Regression Accuracy |
-| :---------- | :---------------------- | :------------------ |
-| **Magnesium** | 73%                     | 70%                 |
-| **Nitrogen** | 81%                     | 80%                 |
-| **Phosphorus**| 83%                     | 86%                 |
-| **Potassium** | 76%                     | 79%                 |
-
-Our findings demonstrate the promising capability of spectroradiometer data combined with advanced machine learning techniques to accurately estimate essential nutrient levels in oil palm leaves.
+> 📷 *[Insert a picture of raw spectral graph or sample data table here]*  
+> `Suggested image: images/sample_spectral_data.png`
 
 ---
 
-## 🚀 Getting Started
+## ⚙️ System Architecture
 
-To get a local copy up and running, follow these simple steps.
+This system follows a structured ML pipeline from raw data preprocessing to model prediction.
 
-### Prerequisites
+> 🖼️ *[Insert a system architecture diagram here]*  
+> `Suggested image: images/system_architecture.png`
 
-* Python 3.x
-* Pip
+---
 
-### Installation
+## 🧪 Preprocessing Pipeline
+
+> 📊 *[Insert a flowchart or GIF of the preprocessing steps]*  
+> `Suggested image or GIF: images/preprocessing_pipeline.gif`
+
+### 1. Noise Reduction
+- **Savitzky-Golay filter** applied to smooth spectral signals.
+
+### 2. Baseline Correction
+- **Polynomial detrending** removes low-frequency baseline.
+
+### 3. Normalization
+- **Min-Max scaling** to [0, 1] for consistency.
+
+### 4. Feature Selection (PCA)
+- **Principal Component Analysis** reduces dimensionality while retaining 95% variance.
+
+### 5. Data Augmentation
+- **Synthetic data generation** via small noise on principal components.
+
+### 6. Target Encoding
+- Categorical target labels converted to numeric for ML compatibility.
+
+---
+
+## 🤖 Model Training
+
+### 📎 Data Splitting
+- **80/20 split** via `train_test_split()` with **stratification**.
+
+### 🧠 Classification Models (Voting Ensemble)
+- `XGBoost`
+- `LightGBM`
+- `CatBoost`
+- `MLPClassifier`
+
+### 📈 Regression Model
+- **Gradient Boosting Regressor** for continuous nutrient level prediction.
+
+> 🎞️ *[Optional: Insert short GIF or plot showing training process or loss curve]*  
+> `Suggested image or gif: images/training_curve.gif`
+
+---
+
+## 📐 Design Specification
+
+The system processes leaf spectral data and predicts nutrient levels using ensemble classifiers and regression models.
+
+> 🧭 *[Insert simplified system diagram or block chart of components]*  
+> `Suggested image: images/design_specification.png`
+
+---
+
+## 📊 Evaluation
+
+### 🔎 Classification Metrics
+- Accuracy
+- F1-Score
+
+### 🔧 Regression Metrics
+- Mean Squared Error (MSE)
+- Root Mean Squared Error (RMSE)
+- Mean Absolute Error (MAE)
+- R-squared
+
+### 📈 Nutrient Prediction Results
+
+| Nutrient   | Classification Accuracy | Regression R² |
+|------------|--------------------------|---------------|
+| Magnesium  | 73%                      | 70%           |
+| Nitrogen   | 81%                      | 80%           |
+| Phosphorus | 83%                      | 86%           |
+| Potassium  | 76%                      | 79%           |
+
+> 📊 *[Insert bar chart comparing classification vs regression]*  
+> `Suggested image: images/classification_vs_regression.png`
+
+---
+
+## 🙏 Acknowledgments
+
+Special thanks to **Dr. Apichon Witayangkurn** for guidance and supervision throughout this project.
+
+---
+
+## 📎 Repository Structure (optional)
 
 ```bash
-git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git)
-cd YOUR_REPO_NAME
-pip install -r requirements.txt
+.
+├── data/                   # Raw and processed spectral data
+├── images/                 # Diagrams, charts, and GIFs
+├── notebooks/              # Jupyter Notebooks for experimentation
+├── models/                 # Saved ML models
+├── src/                    # Preprocessing and training scripts
+├── README.md               # Project documentation
