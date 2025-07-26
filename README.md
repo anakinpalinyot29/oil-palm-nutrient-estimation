@@ -39,15 +39,12 @@ The dataset consists of spectral readings from a **spectroradiometer**, processe
 
 This system follows a structured ML pipeline from raw data preprocessing to model prediction.
 
-> 🖼️ *[Insert a system architecture diagram here]*  
-> `Suggested image: images/system_architecture.png`
+![systemarchitect](images/system_architecture.png)
 
 ---
-
 ## 🧪 Preprocessing Pipeline
 
-> 📊 *[Insert a flowchart or GIF of the preprocessing steps]*  
-> `Suggested image or GIF: images/preprocessing_pipeline.gif`
+![preprocess](images/preprocessing_pipeline.png)
 
 ### 1. Noise Reduction
 - **Savitzky-Golay filter** applied to smooth spectral signals.
@@ -83,17 +80,7 @@ This system follows a structured ML pipeline from raw data preprocessing to mode
 ### 📈 Regression Model
 - **Gradient Boosting Regressor** for continuous nutrient level prediction.
 
-> 🎞️ *[Optional: Insert short GIF or plot showing training process or loss curve]*  
-> `Suggested image or gif: images/training_curve.gif`
-
----
-
-## 📐 Design Specification
-
-The system processes leaf spectral data and predicts nutrient levels using ensemble classifiers and regression models.
-
-> 🧭 *[Insert simplified system diagram or block chart of components]*  
-> `Suggested image: images/design_specification.png`
+![regression](images/training_curve.png)
 
 ---
 
@@ -118,8 +105,7 @@ The system processes leaf spectral data and predicts nutrient levels using ensem
 | Phosphorus | 83%                      | 86%           |
 | Potassium  | 76%                      | 79%           |
 
-> 📊 *[Insert bar chart comparing classification vs regression]*  
-> `Suggested image: images/classification_vs_regression.png`
+![classVsregress](images/classification_vs_regression.png)
 
 ---
 
