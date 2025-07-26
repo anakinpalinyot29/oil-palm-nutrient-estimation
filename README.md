@@ -31,8 +31,7 @@ Monitoring these nutrients helps avoid fertilizer overuse and promotes better cr
 
 The dataset consists of spectral readings from a **spectroradiometer**, processed and labeled for nutrient estimation tasks.
 
-> 📷 *[Insert a picture of raw spectral graph or sample data table here]*  
-> `Suggested image: images/sample_spectral_data.png`
+![dataset](images/sample_spectral_data.png)
 
 ---
 
